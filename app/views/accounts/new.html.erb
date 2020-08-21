@@ -2,10 +2,32 @@
   <div class="bg-white border border-gray-300 rounded-lg px-8 pt-6 pb-8">
     <div class='input-group'>
       <%= form_for(@account) do |account| %>
-        <%= account.label :name, class:"label" %>
-        <%= account.text_field :name, class:"input" %>
+        <div class="input-group">
+          <%= account.label :name, class:"label" %>
+          <%= account.text_field :name, class:"input" %>
+        </div>
+        <%= account.fields_for :owner do |owner| %>
+          <div class="input-group">
+            <%= owner.label :email, class:"label" %>
+            <%= owner.email_field :email, autocomplete: "email", class:"input"%>
+          </div>
+          <div class="input-group">
+            <div class="flex">
+              <%= owner.label :password, class: "label" %>
+              <% if @minimum_password_length %>
+                <span class="pl-1 text-xs text-grey-dark"><em>(<%= @minimum_password_length %> characters minimum)</em></span>
+              <% end %>
+            </div>
+            <%= owner.password_field :password, autocomplete: "new-password", class: "input" %>
+          </div>
+          <div class="input-group">
+            <%= owner.label :password_confirmation, class:"label" %>
+            <%= owner.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+          </div>
+        <% end %>
         <%= account.submit class: "btn btn-default" %>
       <% end %>
     </div>
+    <hr class="mt-6 border" />
   </div>
 </div>
