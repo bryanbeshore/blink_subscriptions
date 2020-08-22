@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require "constraints/subdomain_required"
 
 Rails.application.routes.draw do
     authenticate :user, lambda { |u| u.admin? } do
@@ -11,4 +12,7 @@ Rails.application.routes.draw do
   
   get "/accounts/new", to: "accounts#new", as: :new_account
   post "/accounts", to: "accounts#create", as: :accounts
+
+  # Might not need this
+  get "signed_out", to: "users#signed_out"
 end
