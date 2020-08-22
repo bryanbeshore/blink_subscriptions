@@ -1,2 +1,15 @@
-<h1 class="text-2xl semibold">Welcome to Kickoff Tailwind!</h1>
-<p class="lead">Use this starting point as a way to quickly set up a new project by generating files, installing gems, and more.</p>
+<div class='content col-md-8'> 
+  <% if user_signed_in? %>
+    <h2>Pick an account</h2> 
+    <ul class="accounts">
+      <% current_user.accounts.each do |account| %> 
+      <li>
+        <%= link_to root_url(subdomain: account.subdomain) do %> 
+          <%= account.name %> (<%= account.subdomain %>)
+        <% end %> 
+      </li>
+      <li><%= link_to "Invite User", new_invitation_path %></li>
+    <% end %> 
+    </ul>
+  <% end %> 
+</div>
