@@ -1,0 +1,15 @@
+<% if @invitation.present? %>
+  <h2>Accepting an invitation</h2>
+
+  <p>
+    You are accepting an invitation to join the <%= @invitation.account.name %> account.
+  </p>
+
+  <% if !user_signed_in? %>
+    <%= render "anonymous_accept" %>
+  <% else %>
+    <%= render "user_accept" %>
+  <% end %>
+<% else %>
+  <p>This Invitation has expired</p>
+<% end %>
