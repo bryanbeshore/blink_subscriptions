@@ -1,6 +1,5 @@
 module Accounts
   class InvitationsController < Accounts::BaseController
-    # skip_before_action :authenticate_user!, only: [:accept]
     skip_before_action :authorize_user!, only: [:accept, :accepted]
     before_action :authorize_owner!, except: [:accept, :accepted]
 
