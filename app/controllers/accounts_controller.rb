@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.create(account_params)
+    @account = Account.new(account_params)
     if @account.save
       sign_in(@account.owner)
       flash[:notice] = "Your account has been created."
