@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :pricing, controller: :pricing
+  # if you want multiple subscriptions at a time for an account, then we would want to make subscription plural
+  resource :subscription
+
   root to: 'home#index'
   
   get "/accounts/new", to: "accounts#new", as: :new_account

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_22_200014) do
+ActiveRecord::Schema.define(version: 2020_08_25_152448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,26 @@ ActiveRecord::Schema.define(version: 2020_08_22_200014) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "owner_id"
     t.string "subdomain"
+    t.string "stripe_id"
+    t.string "card_brand"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
     t.index ["subdomain"], name: "index_accounts_on_subdomain"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "stripe_id"
+    t.integer "amount"
+    t.integer "amount_refunded"
+    t.string "card_brand"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_charges_on_account_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -54,6 +73,27 @@ ActiveRecord::Schema.define(version: 2020_08_22_200014) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount"
+    t.string "interval"
+    t.string "stripe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "stripe_id"
+    t.string "stripe_plan"
+    t.string "status"
+    t.datetime "trial_ends_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_subscriptions_on_account_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,7 +109,9 @@ ActiveRecord::Schema.define(version: 2020_08_22_200014) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "charges", "accounts"
   add_foreign_key "invitations", "accounts"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"
+  add_foreign_key "subscriptions", "accounts"
 end
