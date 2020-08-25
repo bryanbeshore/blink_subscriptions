@@ -19,12 +19,14 @@ Rails.application.routes.draw do
         end
       end
       resources :users, only: [:index, :destroy]
+      
+      resource :subscription
     end
   end
 
   resource :pricing, controller: :pricing
   # if you want multiple subscriptions at a time for an account, then we would want to make subscription plural
-  resource :subscription
+  # resource :subscription
 
   root to: 'home#index'
   

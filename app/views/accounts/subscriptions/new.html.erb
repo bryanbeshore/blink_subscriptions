@@ -1,0 +1,31 @@
+<h1>Subscribe</h1>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= form_with url: subscription_path, local: true, id: "payment-form" do |form| %>
+      <div>
+        <label for="card-element" class="block text-sm font-medium leading-5 text-gray-700">Credit or debit card</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input id="card-element" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="123456789">
+        </div>
+        <div id="card-errors" role="alert"></div>
+      </div>
+
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <label>Name on Card</label>
+        <%= form.text_field :name_on_card, id: "name_on_card", placeholder: "Full name", class: "form-input block w-full sm:text-sm sm:leading-5" %>
+      </div>
+
+      <span class="inline-flex rounded-md shadow-sm">      
+        <%= form.hidden_field :plan_id, value: @plan.id %>
+        <%= form.button :subscribe, class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="col-sm-3 offset-sm-1">
+    <h5><%= @plan.name %></h5>
+    <h2><%= formatted_amount @plan.amount %></h2>
+    <div class="mb-3"><small class="text-muted">per <%= @plan.interval %></small></div>
+  </div>
+</div>

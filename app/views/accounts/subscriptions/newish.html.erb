@@ -1,0 +1,49 @@
+<h1>Subscriptions</h1>
+
+<div class="row">
+  <div class="col-sm-8">
+    <%= form_with model: current_account, url: subscription_path, method: :post, local: true, class: ("d-none" if !current_account.card_brand?) do |form| %>
+      <div class="form-group">
+        <label>User your existing card on file or <%= link_to "Add a new card", "#", id: "use-new-card" %></label>
+        <div>
+          <%= current_account.card_brand %> ending in <%= current_account.card_last4 %>
+          <small>Expires on <%= current_account.card_exp_month %> / <%= current_account.card_exp_year %></small>
+        </div>
+      </div>
+
+      <%= form.hidden_field :plan_id %>
+
+      <button class="btn btn-primary">Pay Now</button>
+    <% end %>
+
+    <%= form_with model: current_account, url: subscription_path, method: :post, id: "payment-form", class: ("d-none" if current_account.card_brand?) do |form| %>
+      <div class="form-group">
+        <label for="card-element">
+          Credit or debit card
+        </label>
+        <div id="card-element" class="form-control">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display Element errors. -->
+        <div id="card-errors" role="alert"></div>
+      </div>
+
+      <%= form.hidden_field :plan_id %>
+
+      <button class="btn btn-primary">Pay Now</button>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4">
+    <div><%= @plan.name %></div>
+    <h2>
+      <%= number_to_currency @plan.amount / 100.0, precision: 0 %>
+      <small>/ <%= @plan.interval %></small>
+    </h2>
+
+    <hr />
+
+    <p>Testimonial goes here.</p>
+  </div>
+</div>
