@@ -179,7 +179,7 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    spring (2.1.0)
+    spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -245,8 +245,8 @@ DEPENDENCIES
   simple_form (~> 5.0, >= 5.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
-  stripe (~> 5.23, >= 5.23.1)
-  stripe_event (~> 2.3, >= 2.3.1)
+  stripe (~> 5.10)
+  stripe_event (~> 2.3)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

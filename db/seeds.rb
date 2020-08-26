@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Plan.create(name: "Small", stripe_id: "small-monthly", amount: 25_00, interval: "month")
-Plan.create(name: "Small", stripe_id: "small-annual", amount: 250_00, interval: "year")
-Plan.create(name: "Large", stripe_id: "large-monthly", amount: 100_00, interval: "month")
-Plan.create(name: "Large", stripe_id: "large-annual", amount: 1000_00, interval: "year")
+Plan.create(name: "Small Monthly", stripe_id: "price_1HK4HZE45tZHky7eBtCrdimr", amount: 25_00, interval: "month")
+Plan.create(name: "Small Annual", stripe_id: "price_1HK4HJE45tZHky7exl4966in", amount: 250_00, interval: "year")
+Plan.create(name: "Large Monthly", stripe_id: "price_1HK4GwE45tZHky7erUPAXxgq", amount: 100_00, interval: "month")
+Plan.create(name: "Large Annual", stripe_id: "price_1HK4GXE45tZHky7ewO1ItB0X", amount: 1000_00, interval: "year")
