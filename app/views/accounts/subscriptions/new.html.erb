@@ -3,12 +3,11 @@
 <div class="row">
   <div class="col-sm-4">
     <%= form_with url: subscription_path, local: true, id: "payment-form" do |form| %>
-      <div>
-        <label for="card-element" class="block text-sm font-medium leading-5 text-gray-700">Credit or debit card</label>
-        <div class="mt-1 relative rounded-md shadow-sm">
-          <input id="card-element" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="123456789">
+      <div class="w-full">
+        <label for="card-element" class="block text-sm mb-2">Credit or debit card</label>
+        <div id="card-element">
         </div>
-        <div id="card-errors" role="alert"></div>
+        <div id="card-errors" role="alert" class="text-sm text-red-400"></div>
       </div>
 
       <div class="mt-1 relative rounded-md shadow-sm">
