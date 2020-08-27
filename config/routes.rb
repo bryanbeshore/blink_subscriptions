@@ -2,6 +2,8 @@ require 'sidekiq/web'
 require "constraints/subdomain_required"
 
 Rails.application.routes.draw do
+  mount StripeEvent::Engine, at: '/webhooks/stripe'
+
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
