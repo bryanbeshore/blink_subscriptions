@@ -2,23 +2,39 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <%= form_with url: subscription_path, local: true, id: "payment-form" do |form| %>
-      <div class="w-full">
-        <label for="card-element" class="block text-sm mb-2">Credit or debit card</label>
-        <div id="card-element">
+    <% if current_account.card_last4? %>
+      <%= form_with url: subscription_path, local: true, id: "existing-card" do |form| %>
+        <div class="form-group">
+          <div><%= current_account.card_brand %> ending in <%= current_account.card_last4 %></div>
+          <div>Expires <%= current_account.card_exp_month %> / <%= current_account.card_exp_year %></div>
+          <%= link_to "Use a new card", "#", id: "use-new-card" %>
         </div>
-        <div id="card-errors" role="alert" class="text-sm text-red-400"></div>
+
+        <div class="form-group">
+          <%= form.hidden_field :plan_id, value: @plan.id %>
+          <%= form.submit "Subscribe", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= form_with url: subscription_path, local: true, id: "payment-form", class: ("d-none" if current_account.card_last4?) do |form| %>
+      <div class="form-group">
+        <label for="card-element">Credit or debit card</label>
+        <div id="card-element" class="form-control">
+        </div>
+
+        <div id="card-errors" role="alert"></div>
       </div>
 
-      <div class="mt-1 relative rounded-md shadow-sm">
+      <div class="form-group">
         <label>Name on Card</label>
-        <%= form.text_field :name_on_card, id: "name_on_card", placeholder: "Full name", class: "form-input block w-full sm:text-sm sm:leading-5" %>
+        <%= form.text_field :name_on_card, id: "name_on_card", placeholder: "Full name", class: "form-control" %>
       </div>
 
-      <span class="inline-flex rounded-md shadow-sm">      
+      <div class="form-group">
         <%= form.hidden_field :plan_id, value: @plan.id %>
-        <%= form.button :subscribe, class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
-      </span>
+        <%= form.submit "Subscribe", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 
