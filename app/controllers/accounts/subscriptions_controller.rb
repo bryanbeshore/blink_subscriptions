@@ -2,6 +2,10 @@ module Accounts
   class SubscriptionsController < Accounts::BaseController
     before_action :set_plan, only: [:new, :create, :update]
     
+    def show
+      @subscription = current_account.subscription
+    end
+
     def new
     end
 
@@ -13,8 +17,15 @@ module Accounts
       redirect_to payment_path(e.payment_intent.id)
     end
 
-    def show
+    def edit
       @subscription = current_account.subscription
+      @plans = Plan.all
+    end
+
+    def update
+      @subscription = current_account.subscription
+      @subscription.swap(@plan.stripe_id)
+      redirect_to subscription_path, notice: "You have successfully changed plans."
     end
 
     private
