@@ -56,3 +56,4 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 # Add Stripe
 gem 'stripe', '~> 5.10'
 gem 'stripe_event', '~> 2.3'
+gem 'receipts'
