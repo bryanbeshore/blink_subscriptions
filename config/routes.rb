@@ -22,8 +22,12 @@ Rails.application.routes.draw do
       end
       resources :users, only: [:index, :destroy]
       
-      resource :subscription
+      resource :card
+      resource :subscription do
+        patch :resume
+      end
       resources :payments
+      resources :charges
     end
   end
 

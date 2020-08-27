@@ -53,6 +53,11 @@ class Account < ApplicationRecord
     subscription
   end
 
+  def create_setup_intent
+    stripe_customer if !stripe_id?
+    Stripe::SetupIntent.create(customer: stripe_id)
+  end
+
   def update_card(payment_method_id)
     stripe_customer if !stripe_id?
 

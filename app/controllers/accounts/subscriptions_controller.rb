@@ -13,6 +13,10 @@ module Accounts
       redirect_to payment_path(e.payment_intent.id)
     end
 
+    def show
+      @subscription = current_account.subscription
+    end
+
     private
 
       def set_plan
