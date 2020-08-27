@@ -28,6 +28,16 @@ module Accounts
       redirect_to subscription_path, notice: "You have successfully changed plans."
     end
 
+    def destroy
+      current_account.subscription.cancel
+      redirect_to subscription_path, notice: "Your subscription has been canceled."
+    end
+
+    def resume
+      current_account.subscription.resume
+      redirect_to subscription_path, notice: "Your subscription has been resumed."
+    end
+
     private
 
       def set_plan
@@ -36,26 +46,3 @@ module Accounts
       end
   end
 end
-
-
-
-# class Accounts::PlansController < Accounts::BaseController
-#   def choose
-#     @plan = Plan.all
-#   end
-
-#   def chosen
-#     customer = Stripe::Customer.retrieve(current_account.stripe_id)
-#     plan = Plan.find(params[:account][:plan_id])
-#     subscription = customer.subscriptions.create(
-#       plan: plan.stripe_id,
-#       source: params[:token]
-#     )
-
-#     current_account.plan = plan
-#     current_account.stripe_id = subscription.id
-#     current_account.save
-#     flash[:notice] = "Your account has been created."
-#     redirect_to root_url(subdomain: current_account.subdomain)
-#   end
-# end
