@@ -1,9 +1,9 @@
 <div class='row'>
   <div class='col-md-offset-4 col-md-4 content'>
-    <h2>New Invitation</h2>
-      <%= simple_form_for @invitation do |f| %>
-        <%= f.input :email %>
-        <%= f.submit "Invite User", class: "btn btn-primary" %> 
+      <%= form_for(@invitation) do |invitation| %>
+        <%= invitation.label :new_invitation, class:"label" %>
+        <%= invitation.email_field :email, autocomplete: "email", class:"input block w-full sm:text-sm sm:leading-5", placeholder: "you@example.com" %>
+        <%= invitation.submit "Invite User", class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %> 
       <% end %>
   </div>
 </div>
