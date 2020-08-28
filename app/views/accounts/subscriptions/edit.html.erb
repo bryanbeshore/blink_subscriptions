@@ -1,17 +1,86 @@
-<h1 class="text-center mb-4">Change your plan</h1>
+<div class="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
+  <div class="relative">
+    <div class="absolute inset-0 h-3/4 bg-gray-900"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
 
-<div class="d-flex justify-content-center">
-  <% @plans.each do |plan| %>
-    <div class="col-sm-3">
-      <h5><%= plan.name %></h5>
-      <h2><%= formatted_amount plan.amount %></h2> 
-      <div class="mb-3"><small class="text-muted">per <%= plan.interval %></small></div>
+        <% @plans.each do |plan| %>
+          <div class="d-flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+              <div>
+                <h3 class="inline-flex px-4 py-1 rounded-full text-sm leading-5 font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">
+                  <%= plan.name %>
+                </h3>
+              </div>
+              <div class="mt-4 flex items-baseline text-6xl leading-none font-extrabold">
+                <%= formatted_amount plan.amount %>
+                <span class="ml-1 text-2xl leading-8 font-medium text-gray-500">
+                  <div class="mb-3"><small class="text-muted">/ <%= plan.interval %></small></div>
+                </span>
+              </div>
+              <p class="mt-5 text-lg leading-7 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              </p>
+            </div>
+            <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-100 space-y-6 sm:p-10 sm:pt-6">
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base leading-6 text-gray-700">
+                  Pariatur quod similique
+                </p>
+              </li>
 
-      <% if plan.stripe_id == @subscription.stripe_plan %>
-        <%= link_to "Current Plan", "#", class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out duration-150" %>
-      <% else %>
-        <%= link_to "Switch Plan", subscription_path(plan_id: plan.id), method: :patch, class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150", data: { confirm: "Are you sure you want to change your plan?" } %>
-      <% end %>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base leading-6 text-gray-700">
+                  Sapiente libero doloribus modi nostrum
+                </p>
+              </li>
+
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base leading-6 text-gray-700">
+                  Vel ipsa esse repudiandae excepturi
+                </p>
+              </li>
+
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p class="ml-3 text-base leading-6 text-gray-700">
+                  Itaque cupiditate adipisci quibusdam
+                </p>
+              </li>
+            </ul>
+            <div class="rounded-md shadow">
+              <% if plan.stripe_id == @subscription.stripe_plan %>
+                <%= link_to "Current Plan", "#", class: "flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out" %>
+              <% else %>
+                <%= link_to "Switch Plan", subscription_path(plan_id: plan.id), method: :patch, class: "flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out", data: { confirm: "Are you sure you want to change your plan?" } %>
+              <% end %>
+            </div>
+          </div>
+          </div>
+        <% end %>
+
+        
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
