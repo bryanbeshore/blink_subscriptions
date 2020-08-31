@@ -26,7 +26,7 @@ stripe:
   
 3) In terminal, generate a signin_secret by using the following command: ```stripe listen --forward-to lvh.me:5000/webhooks/stripe```
 > Note: we are using the localhost location at lvh.me:5000 because we are running a multi-tennant application. We need to allow
-> for subdomain.url.com or in this care subdomain.lvh.me:5000 in order for this multi-tenant application to work correctly.
+> for subdomain.url.com or in this case subdomain.lvh.me:5000 in order for this multi-tenant application to work correctly.
 4) In terminal, to get the local server working, use the following command: ```STRIPE_SIGNING_SECRET=your_secret_from_part_3_here foreman start```
 
 --- END ---
