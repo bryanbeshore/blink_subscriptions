@@ -10,6 +10,7 @@ module Accounts
     end
 
     def create
+      @owner = current_account.owner
       current_account.update_card(params[:payment_method_id]) if params[:payment_method_id].present?
       current_account.subscribe(@plan.stripe_id)
       redirect_to root_path, notice: "Thanks for subscribing"

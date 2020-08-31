@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   constraints(SubdomainRequired) do
     scope module: "accounts" do
       root to: "dashboard#index", as: :account_root
-      resources :dashboard, only: [:index]
+      resources :dashboard
 
       resources :invitations, only: [:new, :create] do
         member do
