@@ -78,7 +78,7 @@ class Account < ApplicationRecord
     else
       customer = Stripe::Customer.create(
         #might need to use current_account.owner.email or something like this if not working correctly w/ accounts
-        # email: email,
+        email: owner.email,
         description: subdomain,
         name: name,
       )
