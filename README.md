@@ -20,8 +20,9 @@ stripe:
   public_key: 
   private_key: 
   signing_secret:
+
+# You can place a signing_secret here for stripe webhooks, but I leave this blank. Instead I issue a signing_secret and run it in my localhost on start. See step 3 below with the command to issue the key, and step 4 below to run it on boot
 ```
-  ###### You can place a signing_secret here for stripe webhooks, but I leave this blank. Instead I issue a signing_secret and run it in my localhost on start. See step 4 below with the command to issue the key, and step 5 below to run it on boot
   
 3) In terminal, generate a signin_secret by using the following command: ```stripe listen --forward-to lvh.me:5000/webhooks/stripe```
 > Note: we are using the localhost location at lvh.me:5000 because we are running a multi-tennant application. We need to allow
