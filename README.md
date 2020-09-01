@@ -15,18 +15,20 @@ In order to get stripe working correctly:
 1) Open up a stripe account, and issue development API keys
 2) run the following command: ```EDITOR="code --wait" bin/rails credentials:edit --environment=development```
 Place the keys in the appropriate location
+
 ```
 stripe:
   public_key: 
   private_key: 
   signing_secret:
 
-# You can place a signing_secret here for stripe webhooks, but I leave this blank. Instead I issue a signing_secret and run it in my localhost on start. See step 3 below with the command to issue the key, and step 4 below to run it on boot
+# You can place a signing_secret here for stripe webhooks, but I leave this blank. Instead I issue a signing_secret and run it in my localhost on start. See step 4 below with the command to issue the key, and step 5 below to run it on boot
 ```
   
-3) In terminal, generate a signin_secret by using the following command: ```stripe listen --forward-to lvh.me:5000/webhooks/stripe```
+3) Make sure you rake db:seeds as well, as the Stripe Plans we are using - in development - are there. For production we will put in the correct plans.
+4) In terminal, generate a signin_secret by using the following command: ```stripe listen --forward-to lvh.me:5000/webhooks/stripe```
 > Note: we are using the localhost location at lvh.me:5000 because we are running a multi-tennant application. We need to allow
 > for subdomain.url.com or in this case subdomain.lvh.me:5000 in order for this multi-tenant application to work correctly.
-4) In terminal, to get the local server working, use the following command: ```STRIPE_SIGNING_SECRET=your_secret_from_part_3_here foreman start```
+5) In terminal, to get the local server working, use the following command: ```STRIPE_SIGNING_SECRET=your_secret_from_part_3_here foreman start```
 
 --- END ---
