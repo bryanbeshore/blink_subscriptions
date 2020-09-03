@@ -52,6 +52,7 @@ gem 'friendly_id', '~> 5.3'
 gem 'sidekiq', '~> 6.1', '>= 6.1.1'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 
 # Add Stripe
 gem 'stripe', '~> 5.10'

@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/mdeering/gravatar_image_tag.git
+  revision: c02351f7d6649e2346394e33164a7154e671ec19
+  specs:
+    gravatar_image_tag (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -243,6 +249,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise (~> 4.7, >= 4.7.2)
   friendly_id (~> 5.3)
+  gravatar_image_tag!
   jbuilder (~> 2.7)
   listen (~> 3.2)
   name_of_person (~> 1.1, >= 1.1.1)
