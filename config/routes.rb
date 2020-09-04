@@ -2,6 +2,15 @@ require 'sidekiq/web'
 require "constraints/subdomain_required"
 
 Rails.application.routes.draw do
+  use_doorkeeper
+  namespace :api do
+    namespace :v1 do
+      get '/all' => "users#all"
+      get '/me' => "users#me"
+      get '/accounts' => "accounts#accounts"
+    end
+  end
+
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 
     authenticate :user, lambda { |u| u.admin? } do

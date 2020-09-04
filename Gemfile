@@ -57,3 +57,6 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'stripe', '~> 5.10'
 gem 'stripe_event', '~> 2.3'
 gem 'receipts'
+
+# OAuth2
+gem "doorkeeper", "~> 5.4"
