@@ -1,31 +1,72 @@
 <div class="row">
-  <div class="col-md-7 content">
-    <h1><%= current_account.name %> Users</h1>
+  <div class="pb-5 border-b border-gray-200">
+    <h3 class="text-lg leading-6 font-medium text-white">
+      <%= current_account.name %> Users
+    </h3>
     <%= link_to "Invite Users", new_invitation_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"%>
-
-    <table class="table table-striped" id="users">
-      <thead>
-        <th>User</th>
-        <th></th>
-      </thead>
-
-      <tbody> 
-        <tr>
-          <td><%= current_account.owner.email %></td>
-          <td></td>
-        </tr>
-        <% current_account.users.each do |user| %> 
-          <tr>
-            <td><%= user.email %></td> 
-            <td>
-              <%= link_to "Remove", user_path(user),
-                method: :delete,
-                data: { confirm: "Are you sure you want to remove this user?" }, 
-                class: "btn btn-danger" %>
-            </td> 
-          </tr>
-        <% end %> 
-      </tbody>
-    </table>
   </div>
 </div>
+
+<ul class="pt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <% current_account.users.each do |user| %>
+    <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow">
+      <div class="flex-1 flex flex-col p-8">
+        <svg class="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="01a-home" transform="translate(-795.000000, -2008)" fill-rule="nonzero">
+                    <g id="Group-17" transform="translate(861.000000, 2070.000000) scale(-1, 1) translate(-861.000000, -2070.000000) translate(841.000000, 2023.000000)">
+                        <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="6" y="87" width="24" height="3"></rect>
+                        <g id="Group-14" transform="translate(15.000000, 45.000000)">
+                            <rect id="Rectangle" fill="#1A1A1A" x="0" y="0" width="3" height="45"></rect>
+                            <rect id="Rectangle" fill="#1A1A1A" x="3" y="0" width="3" height="24"></rect>
+                            <rect id="Rectangle" fill="#1A1A1A" x="6" y="0" width="3" height="6"></rect>
+                            <rect id="Rectangle" fill="#1A1A1A" x="9" y="0" width="3" height="45"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" x="9" y="42" width="3" height="3"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" x="0" y="42" width="3" height="3"></rect>
+                            <rect id="Rectangle" fill="#1A1A1A" x="12" y="0" width="3" height="21"></rect>
+                        </g>
+                        <g id="Group-11" transform="translate(18.000000, 0.000000)">
+                            <rect id="Rectangle" fill="#F4E4CB" x="0" y="0" width="15" height="15"></rect>
+                            <rect id="Rectangle" fill="#8F8577" x="6" y="6" width="3" height="3"></rect>
+                            <rect id="Rectangle" fill="#8F8577" x="12" y="6" width="3" height="3"></rect>
+                            <rect id="Rectangle" fill="#D0021B" x="0" y="0" width="15" height="3"></rect>
+                            <rect id="Rectangle" fill="#D0021B" x="0" y="3" width="3" height="3"></rect>
+                        </g>
+                        <rect id="Rectangle" fill="#F1EBC9" x="21" y="15" width="6" height="3"></rect>
+                        <rect id="Rectangle" fill="#BFBA9F" x="24" y="15" width="3" height="3"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="21" y="18" width="3" height="30"></rect>
+                        <rect id="Rectangle" fill="#1D1B1D" x="0" y="90" width="40" height="4"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="18" y="15" width="3" height="33"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="24" y="18" width="3" height="30"></rect>
+                        <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="24" y="30" width="3" height="3"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="15" y="21" width="3" height="24"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="12" y="27" width="3" height="21"></rect>
+                        <rect id="Rectangle" fill="#F4E4CB" x="12" y="48" width="3" height="6"></rect>
+                        <rect id="Rectangle" fill="#F4E4CB" x="30" y="48" width="3" height="6"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="27" y="21" width="3" height="24"></rect>
+                        <rect id="Rectangle" fill="#F8E71C" x="30" y="30" width="3" height="18"></rect>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium"><%= user.email %></h3>
+        <dl class="mt-1 flex-grow flex flex-col justify-between">
+          <dt class="sr-only">Title</dt>
+          <dd class="text-gray-500 text-sm leading-5"><%= user.email %></dd>
+          <dt class="sr-only">Role</dt>
+          <dd class="mt-3">
+            <span class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-teal-100 rounded-full">Admin</span>
+          </dd>
+        </dl>
+      </div>
+      <div class="border-t border-gray-200">
+        <div class="-mt-px flex">
+          <div class="w-0 flex-1 flex border-gray-200">
+            <%= link_to "Remove", user_path(user), method: :delete, data: { confirm: "Are you sure you want to remove this user?" }, class: "relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150" %>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </li>  
+  <% end %>
+</ul>
