@@ -1,11 +1,14 @@
-<div class="row">
-  <div class="pb-5 border-b border-gray-200">
-    <h3 class="text-lg leading-6 font-medium text-white">
-      <%= current_account.name %> Users
-    </h3>
-    <%= link_to "Invite Users", new_invitation_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"%>
+<div class="pb-5 border-b border-gray-300 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-x-4 sm:space-y-0">
+  <h1 class="text-3xl font-bold leading-tight text-gray-900">
+    All Users
+  </h1>
+  <div>
+    <span class="shadow-sm rounded-md">
+      <%= link_to "Invite Users", new_invitation_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"%>
+    </span>
   </div>
 </div>
+
 
 <ul class="pt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
   <% current_account.users.each do |user| %>
@@ -70,3 +73,221 @@
     </li>  
   <% end %>
 </ul>
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+              
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+          </thead>
+          <% current_account.users.each do |user| %>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-no-wrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-50 w-50">
+                      <svg class="w-50 h-50 flex-shrink-0 mx-auto">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="01a-home" transform="translate(-795.000000, -2008)" fill-rule="nonzero">
+                                  <g id="Group-17" transform="translate(861.000000, 2070.000000) scale(-1, 1) translate(-861.000000, -2070.000000) translate(841.000000, 2023.000000)">
+                                      <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="6" y="87" width="24" height="3"></rect>
+                                      <g id="Group-14" transform="translate(15.000000, 45.000000)">
+                                          <rect id="Rectangle" fill="#1A1A1A" x="0" y="0" width="3" height="45"></rect>
+                                          <rect id="Rectangle" fill="#1A1A1A" x="3" y="0" width="3" height="24"></rect>
+                                          <rect id="Rectangle" fill="#1A1A1A" x="6" y="0" width="3" height="6"></rect>
+                                          <rect id="Rectangle" fill="#1A1A1A" x="9" y="0" width="3" height="45"></rect>
+                                          <rect id="Rectangle" fill="#FFFFFF" x="9" y="42" width="3" height="3"></rect>
+                                          <rect id="Rectangle" fill="#FFFFFF" x="0" y="42" width="3" height="3"></rect>
+                                          <rect id="Rectangle" fill="#1A1A1A" x="12" y="0" width="3" height="21"></rect>
+                                      </g>
+                                      <g id="Group-11" transform="translate(18.000000, 0.000000)">
+                                          <rect id="Rectangle" fill="#F4E4CB" x="0" y="0" width="15" height="15"></rect>
+                                          <rect id="Rectangle" fill="#8F8577" x="6" y="6" width="3" height="3"></rect>
+                                          <rect id="Rectangle" fill="#8F8577" x="12" y="6" width="3" height="3"></rect>
+                                          <rect id="Rectangle" fill="#D0021B" x="0" y="0" width="15" height="3"></rect>
+                                          <rect id="Rectangle" fill="#D0021B" x="0" y="3" width="3" height="3"></rect>
+                                      </g>
+                                      <rect id="Rectangle" fill="#F1EBC9" x="21" y="15" width="6" height="3"></rect>
+                                      <rect id="Rectangle" fill="#BFBA9F" x="24" y="15" width="3" height="3"></rect>
+                                      <rect id="Rectangle" fill="#FFFFFF" x="21" y="18" width="3" height="30"></rect>
+                                      <rect id="Rectangle" fill="#1D1B1D" x="0" y="90" width="40" height="4"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="18" y="15" width="3" height="33"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="24" y="18" width="3" height="30"></rect>
+                                      <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="24" y="30" width="3" height="3"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="15" y="21" width="3" height="24"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="12" y="27" width="3" height="21"></rect>
+                                      <rect id="Rectangle" fill="#F4E4CB" x="12" y="48" width="3" height="6"></rect>
+                                      <rect id="Rectangle" fill="#F4E4CB" x="30" y="48" width="3" height="6"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="27" y="21" width="3" height="24"></rect>
+                                      <rect id="Rectangle" fill="#F8E71C" x="30" y="30" width="3" height="18"></rect>
+                                  </g>
+                              </g>
+                          </g>
+                      </svg>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm leading-5 font-medium text-gray-900">
+                        <%= user.email %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-no-wrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Active
+                  </span>
+                </td>
+                
+                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                  <%= link_to "Remove", user_path(user), method: :delete, data: { confirm: "Are you sure you want to remove this user?" }, class: "text-indigo-600 hover:text-indigo-900" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Title
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Role
+              </th>
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      Jane Cooper
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      jane.cooper@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="text-sm leading-5 text-gray-900">Regional Paradigm Technician</div>
+                <div class="text-sm leading-5 text-gray-500">Optimization</div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                Admin
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      Jane Cooper
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      jane.cooper@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="text-sm leading-5 text-gray-900">Regional Paradigm Technician</div>
+                <div class="text-sm leading-5 text-gray-500">Optimization</div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                Admin
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm leading-5 font-medium text-gray-900">
+                      Jane Cooper
+                    </div>
+                    <div class="text-sm leading-5 text-gray-500">
+                      jane.cooper@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <div class="text-sm leading-5 text-gray-900">Regional Paradigm Technician</div>
+                <div class="text-sm leading-5 text-gray-500">Optimization</div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                Admin
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+              </td>
+            </tr>
+
+            <!-- More rows... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
