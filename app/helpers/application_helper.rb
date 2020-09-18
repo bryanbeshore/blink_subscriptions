@@ -18,4 +18,16 @@ module ApplicationHelper
       gravatar_image_url(user.email, size: size)
     end
   end
+
+  def subscription_plan_name(subscription)
+    if subscription.stripe_plan == "price_1HK4GXE45tZHky7ewO1ItB0X"
+      "Large Annual"
+    elsif subscription.stripe_plan == "price_1HK4GwE45tZHky7erUPAXxgq"
+      "Large Monthly"
+    elsif subscription.stripe_plan == "price_1HK4HJE45tZHky7exl4966in"
+      "Small Annual"
+    elsif subscription.stripe_plan == "price_1HK4HZE45tZHky7eBtCrdimr"
+      "Small Monthly"
+    end
+  end
 end
