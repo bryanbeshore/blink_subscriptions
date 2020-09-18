@@ -1,20 +1,31 @@
+<div class="pb-5 border-b border-gray-300 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-x-4 sm:space-y-0">
+  <h1 class="text-3xl font-bold leading-tight text-gray-900">
+    Billing Information
+  </h1>
+</div>
+
+
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-  <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-    <h3 class="text-lg leading-6 font-medium text-gray-900">
-      Billing Information
-    </h3>
-      <% if @subscription && @subscription.on_trial? %>
-        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">You are trialing the <strong><%= @subscription.stripe_plan %></strong> plan.</p>
-        <%= link_to "Change plan", edit_subscription_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
-      <% elsif @subscription && @subscription.on_grace_period? %>
-        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">Your subscription has been canceled and you have access until <%= @subscription.ends_at.to_date.to_s(:long) %></p>
-        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500"><%= link_to "Resume subscription", resume_subscription_path, method: :patch %></p>
-      <% elsif @subscription && @subscription.active? %>
-        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">You are subscribed to the <strong><%= @subscription.stripe_plan %></strong> plan.</p>
-        <%= link_to "Change plan", edit_subscription_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
-      <% else %>
-        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">You are not subscribed. <%= link_to "Subscribe", pricing_path %></p>
-      <% end %>
+  <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5 border-b border-gray-200">
+    <dt class="text-sm leading-5 font-medium text-gray-500">
+      Plan Subscribed to
+    </dt>
+    <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">   
+      <div class="rounded-md bg-gray-50 sm:flex sm:items-start sm:justify-between"> 
+        <% if @subscription && @subscription.on_trial? %>
+          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-900">You are trialing the <strong><%= @subscription.stripe_plan %></strong> plan.</p>
+          <%= link_to "Change plan", edit_subscription_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
+        <% elsif @subscription && @subscription.on_grace_period? %>
+          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-900">Your subscription has been canceled and you have access until <%= @subscription.ends_at.to_date.to_s(:long) %></p>
+          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-900"><%= link_to "Resume subscription", resume_subscription_path, method: :patch %></p>
+        <% elsif @subscription && @subscription.active? %>
+          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-900">You are subscribed to the <strong><%= @subscription.stripe_plan %></strong> plan.</p>
+          <%= link_to "Change plan", edit_subscription_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" %>
+        <% else %>
+          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-900">You are not subscribed. <%= link_to "Subscribe", pricing_path %></p>
+        <% end %>
+      </div>
+    </dd>
   </div>
   <div class="px-4 py-5 sm:p-0">
     <dl>
@@ -26,11 +37,19 @@
           <div class="rounded-md bg-gray-50 sm:flex sm:items-start sm:justify-between">
             <% if current_account.card_last4? %>
               <div class="sm:flex sm:items-start">
-                <svg class="h-8 w-auto sm:flex-shrink-0 sm:h-6" fill="none" viewBox="0 0 36 24" role="img" aria-labelledby="svg-visa">
-                  <title id="svg-visa">VISA</title>
-                  <rect width="36" height="24" fill="#224DBA" rx="4" />
-                  <path fill="#fff" fill-rule="evenodd" d="M10.925 15.673H8.874l-1.538-6c-.073-.276-.228-.52-.456-.635A6.575 6.575 0 005 8.403v-.231h3.304c.456 0 .798.347.855.75l.798 4.328 2.05-5.078h1.994l-3.076 7.5zm4.216 0h-1.937L14.8 8.172h1.937l-1.595 7.5zm4.101-5.422c.057-.404.399-.635.798-.635a3.54 3.54 0 011.88.346l.342-1.615A4.808 4.808 0 0020.496 8c-1.88 0-3.248 1.039-3.248 2.481 0 1.097.969 1.673 1.653 2.02.74.346 1.025.577.968.923 0 .519-.57.75-1.139.75a4.795 4.795 0 01-1.994-.462l-.342 1.616a5.48 5.48 0 002.108.404c2.108.057 3.418-.981 3.418-2.539 0-1.962-2.678-2.077-2.678-2.942zm9.457 5.422L27.16 8.172h-1.652a.858.858 0 00-.798.577l-2.848 6.924h1.994l.398-1.096h2.45l.228 1.096h1.766zm-2.905-5.482l.57 2.827h-1.596l1.026-2.827z" clip-rule="evenodd" />
-                </svg>
+                <% if current_account.card_brand == "Visa"%>
+                  <svg class="h-8 w-auto sm:flex-shrink-0 sm:h-6" fill="none" viewBox="0 0 36 24" role="img" aria-labelledby="svg-visa">
+                    <title id="svg-visa">VISA</title>
+                    <rect width="36" height="24" fill="#224DBA" rx="4" />
+                    <path fill="#fff" fill-rule="evenodd" d="M10.925 15.673H8.874l-1.538-6c-.073-.276-.228-.52-.456-.635A6.575 6.575 0 005 8.403v-.231h3.304c.456 0 .798.347.855.75l.798 4.328 2.05-5.078h1.994l-3.076 7.5zm4.216 0h-1.937L14.8 8.172h1.937l-1.595 7.5zm4.101-5.422c.057-.404.399-.635.798-.635a3.54 3.54 0 011.88.346l.342-1.615A4.808 4.808 0 0020.496 8c-1.88 0-3.248 1.039-3.248 2.481 0 1.097.969 1.673 1.653 2.02.74.346 1.025.577.968.923 0 .519-.57.75-1.139.75a4.795 4.795 0 01-1.994-.462l-.342 1.616a5.48 5.48 0 002.108.404c2.108.057 3.418-.981 3.418-2.539 0-1.962-2.678-2.077-2.678-2.942zm9.457 5.422L27.16 8.172h-1.652a.858.858 0 00-.798.577l-2.848 6.924h1.994l.398-1.096h2.45l.228 1.096h1.766zm-2.905-5.482l.57 2.827h-1.596l1.026-2.827z" clip-rule="evenodd" />
+                  </svg>
+                <% elsif current_account.card_brand == "Amex" %>
+                  <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/master/flat-rounded/amex.svg" alt="American Express" style="height: 24px;">
+                <% elsif current_account.card_brand == "Mastercard"%>
+                  <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/master/flat-rounded/mastercard.svg" alt="MasterCard" style="height: 24px;">
+                <% elsif current_account.card_brand == "Discover"%>
+                  <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/master/flat-rounded/discover.svg" alt="Discover" style="height: 24px;">
+                <% end %>
                 <div class="mt-3 sm:mt-0 sm:ml-4">
                   <div class="text-sm leading-5 font-medium text-gray-900">
                     <%= current_account.card_brand %> ending in <%= current_account.card_last4 %>
@@ -63,12 +82,12 @@
           </div>
         </dd>
       </div>
-      <div class="mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
+      <div class="mt-8 sm:mt-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
         <dt class="text-sm leading-5 font-medium text-gray-500">
           Cancel subscription
         </dt>
-        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">   
-          <div class="bg-gray-50 text-right">
+        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-end-6">   
+          <div class="bg-gray-50 col-end-6">
             <% if @subscription.active? && !@subscription.on_grace_period? %>
               <%= link_to "Cancel subscription", subscription_path, method: :delete, data: { confirm: "Are you sure you want to cancel?" }, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" %>
             <% end %> 
@@ -130,4 +149,3 @@
     </dl>
   </div>
 </div>
-
