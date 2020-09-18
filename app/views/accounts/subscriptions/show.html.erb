@@ -62,7 +62,7 @@
                       &middot;
                     </span>
                     <div class="mt-1 sm:mt-0">
-                      Last updated on 22 Aug 2017
+                      Last updated: <%= current_account.charges.first.updated_at.strftime("%B %d, %Y")   %>
                     </div>
                   </div>
                 </div>
@@ -92,15 +92,6 @@
               <%= link_to "Cancel subscription", subscription_path, method: :delete, data: { confirm: "Are you sure you want to cancel?" }, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" %>
             <% end %> 
           </div>          
-        </dd>
-      </div>
-      
-      <div class="mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
-        <dt class="text-sm leading-5 font-medium text-gray-500">
-          About
-        </dt>
-        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
         </dd>
       </div>
       <div class="mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
