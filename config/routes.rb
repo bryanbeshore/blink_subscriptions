@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :users
   constraints(SubdomainRequired) do
     scope module: "accounts" do
-      root to: "dashboard#index", as: :account_root
+      root to: "users#index", as: :account_root
       resources :dashboard
 
       resources :invitations, only: [:new, :create] do

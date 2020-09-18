@@ -1,14 +1,14 @@
-<div class="bg-white">
-  <div class="mx-auto py-12 px-4 max-w-screen-xl sm:px-6 lg:px-8 lg:py-24">
-    <div class="space-y-12">
-      <div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
+<div class="bg-white overflow-hidden shadow rounded-lg">
+  <div class="mx-auto py-4 px-4">
+    <div class="space-y-4">
+      <div class="pb-5 border-b border-gray-300 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-x-4 sm:space-y-0">
         <h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">Pick an account</h2>
       </div>
-      <ul class="accounts space-y-6 sm:grid sm:grid-cols-2 sm:col-gap-6 sm:row-gap-12 sm:space-y-0 lg:grid-cols-3 lg:col-gap-8">
+      <ul class="accounts space-y-6 grid-cols-1">
         <% current_user.accounts.each do |account| %>
           <li>
             <div class="space-y-2">
-              <div class="relative pb-2/3">
+              <div class="relative">
                 <img class="absolute object-cover h-full w-full shadow-lg rounded-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
               </div>
               <div class="space-y-2">
